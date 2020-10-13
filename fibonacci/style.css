@@ -1,0 +1,16 @@
+*{
+    margin: none;
+    background-color: darkcyan;
+    font-family: arial;
+    font-weight: 600;
+    font-size: 24px;
+}
+
+#inputfield{
+    width: 100px;
+}
+
+
+#output{
+    background-color: firebrick;
+}

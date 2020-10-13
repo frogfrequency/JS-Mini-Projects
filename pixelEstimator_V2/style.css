@@ -1,0 +1,22 @@
+
+
+
+#main-field {
+    background-color: royalblue;
+    width: 400px;
+    height: 400px;
+    font-size: 0;
+}
+
+.pixelOne {
+    background-color: darkblue;
+    width: 2px;
+    height: 2px;
+    display: inline-block;
+}
+.pixelTwo {
+    background-color: royalblue;
+    width: 2px;
+    height: 2px;
+    display: inline-block;
+}
