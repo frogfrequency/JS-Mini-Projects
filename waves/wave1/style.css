@@ -1,5 +1,7 @@
-.main-div {
-    background-color: sienna;
-    length: 500px;
-    width: 500px;
+.wave-element {
+    background-color: black;
+    width: 10px;
+    height: 10px;
+    left: 200px;
+    position: relative;
 }
