@@ -1,21 +1,33 @@
+*{
+    background-color: honeydew;
+}
 
+#abdecker {
+    width: 400px;
+    height: 400px;
+    background-color: lightgrey;
+    position: absolute;
+    left: 8px;
+    top: 115px;
+    display: none;
+}
 
 
 #main-field {
-    background-color: royalblue;
+    background-color: lightgrey;
     width: 400px;
     height: 400px;
     font-size: 0;
 }
 
 .pixelOne {
-    background-color: darkblue;
+    background-color: darkslategrey;
     width: 2px;
     height: 2px;
     display: inline-block;
 }
 .pixelTwo {
-    background-color: royalblue;
+    background-color: lightgrey;
     width: 2px;
     height: 2px;
     display: inline-block;

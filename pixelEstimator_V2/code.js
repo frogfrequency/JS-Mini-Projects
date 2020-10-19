@@ -1,12 +1,15 @@
 var percentage = 0;
 var roundPlayed = false;
 
-function clearBoard() {
-    var toClear = document.getElementById("main-field");
-    toClear.innerHTML = '';
+function coverUp() {
+    var x = document.getElementById("abdecker")
+    x.style.display = "block";
 }
 
 function generateBoard() {
+    document.getElementById("abdecker").style.display = "none";
+    document.getElementById("main-field").innerHTML = "";
+
     const seedPercent = Math.floor(Math.random() * 100);
 
     const totalPixels = 40000;
@@ -29,7 +32,7 @@ function generateBoard() {
 
     roundPlayed = true;
 
-    setTimeout(clearBoard, 2000);
+    setTimeout(coverUp, 2000);
 
 }
 
@@ -41,6 +44,9 @@ function compare() {
         outputMsg.innerHTML += resultText;
     }
     roundPlayed = false;
+
+    var x = document.getElementById("abdecker")
+    x.style.display = "none";
 }
 
 

@@ -10,7 +10,7 @@ function generateWave() {
     console.log(desiredColor);
     
     console.log(factor);
-    for (i=0; i<1000; i++) { 
+    for (i=0; i<300; i++) { 
         const newDiv = document.createElement("div");
         newDiv.className = "wave-element";
         newDiv.style["background-color"] = desiredColor;
@@ -19,7 +19,7 @@ function generateWave() {
 
         setTimeout(() => {
             mainDiv.appendChild(newDiv);
-        }, 50 * i);
+        }, 15 * i);
 
     }
 
