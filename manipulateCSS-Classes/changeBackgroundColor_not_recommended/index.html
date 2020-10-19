@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>change class rules color and backgroundcolor</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="code.js"></script>
+</head>
+<body>
+    <h2>hoi sandro. the button gets the stylesheets top rule(s) (the .chameleon rules) and modifies its color</h2>
+    <h2>so now... how can the .chameleon background-color be changed in the same way?</h2>
+    <h2>note: do not select all chameleon-class-elements to change each element's backgroundcolor.. change the class rule!</h2>
+    <label for="color">choose your color</label>
+    <select name="color" id="color-selector">
+        <option value="green">nice green</option>
+        <option value="red">nice red</option>
+        <option value="blue">nice blue</option>
+        <option value="darkkhaki">nice darkkhaki</option>
+    </select>
+    <br>
+    <button onclick="changeColor()">change the color of all chameleon class elements</button>
+    <h2 class="chameleon">i am a h2 element with the class of chameleon</h1>
+    <h2 class="chameleon">so am i</h1>
+    <div class="chameleon">hi i am a div and i also belong to the chameleon class</div>
+
+</body>
+</html>
