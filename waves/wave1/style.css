@@ -1,7 +1,6 @@
 .wave-element {
-    background-color: black;
-    width: 10px;
-    height: 10px;
+    width: 2px;
+    height: 2px;
     left: 200px;
     position: relative;
 }
