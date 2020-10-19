@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>change class rules color and backgroundcolor</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="style.css">
     <script src="code.js"></script>
 </head>
 <body>
@@ -19,7 +19,16 @@
         <option value="darkkhaki">nice darkkhaki</option>
     </select>
     <br>
+    <label for="bg-color">choose your background-color</label>
+    <select name="bg-color" id="bg-color-selector">
+        <option value="green">nice green bg</option>
+        <option value="red">nice red bg</option>
+        <option value="blue">nice blue bg</option>
+        <option value="darkkhaki">nice darkkhaki bg</option>
+    </select>
+    <br>
     <button onclick="changeColor()">change the color of all chameleon class elements</button>
+    <button onclick="reset()">reset to default</button>
     <h2 class="chameleon">i am a h2 element with the class of chameleon</h1>
     <h2 class="chameleon">so am i</h1>
     <div class="chameleon">hi i am a div and i also belong to the chameleon class</div>
