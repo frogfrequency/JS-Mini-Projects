@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>graphX1</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./code.js"></script>
+</head>
+<body onload="onLoad()">
+    <div id="area"></div>
+    <h3>y = m*x + c</h4>
+    <label for="chooseM">choose your gradient (m):</label>
+    <input id='chooseM' type="number">
+    <br>
+    <label for="chooseC">choose your ?intercept? (c) (q in german):</label>
+    <input id='chooseC' type="number">
+    <br>
+    <label for="line-color">choose graph color:</label>
+    <select name="line-color" id="choose-color">
+        <option value="green">nice green</option>
+        <option value="red">nice red</option>
+        <option value="blue">nice blue</option>
+        <option value="black">nice black</option>
+    </select>
+    <br>
+    <button onclick="drawGraph()">draw the graph</button>
+</body>
+</html>
