@@ -7,13 +7,14 @@
     <link rel="stylesheet" href="./style.css">
     <script src="./code.js"></script>
 </head>
-<body onload="onLoad()">
+<body onload="generateCordSystem()">
 
     <div id="area"></div>
     
     <span id="terminal"></div>
-        <h3>y = m*x + c</h4>
-        <button onclick="drawTargets()">draw the Targets</button>
+        <h3>structure of linear functions: y = m*x + c</h4>
+        <br>
+        <button onclick="startGame()">new game</button>
         <br>
         <label for="chooseM">choose your gradient (m):</label>
         <input id='chooseM' type="number">
@@ -21,7 +22,10 @@
         <label for="chooseC">choose your ?intercept? (c) (q in german):</label>
         <input id='chooseC' type="number">
         <br>
-        <button onclick="drawGraph()">draw the graph</button>
+        <button onclick="submitSolution()">submit solution</button>
+        <br>
+        <br>
+        <div id="result-text"></div>
     </span>  
 
 </body>

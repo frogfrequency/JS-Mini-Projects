@@ -18,15 +18,15 @@ function createLine() {
 
 function checkMatch() {
     const targetElement = document.getElementById('target');
-    const targetLeft = returnLeftValue(targetElement);
-    const targetTop = returnTopValue(targetElement);
+    const targetLeft = returnValue(targetElement, "left");
+    const targetTop = returnValue(targetElement, "top");
 
 
     const graphElements = Array.from(document.getElementsByClassName('line'));
 
     graphElements.forEach(element => {
-        let elementLeft = returnLeftValue(element);
-        let elementTop = returnTopValue(element);
+        let elementLeft = returnValue(element, "left");
+        let elementTop = returnValue(element, "top");
         console.log('tl: ' + targetLeft + ', tt: ' + targetTop + ', el: ' + elementLeft + ', et: ' + elementTop);
         if(targetLeft < elementLeft){console.log('checkone')};
         if(targetLeft < elementLeft && elementLeft < targetLeft + 50 && targetTop < elementTop && elementTop < targetTop + 50) {
@@ -39,10 +39,22 @@ function checkMatch() {
     
 }
 
-function returnLeftValue(x) {
-    return window.getComputedStyle(x).getPropertyValue("left").slice(0,-2);
-}
+    // these two are not used anymore because with have the returnValue(element, whichValue) where you can specify the value you want returned
 
-function returnTopValue(x) {
-    return window.getComputedStyle(x).getPropertyValue("top").slice(0,-2);
+// function returnLeftValue(x) {
+//     let leftValue = window.getComputedStyle(x).getPropertyValue("left")
+//     leftValue = Number.parseInt(leftValue.slice(0,-2));
+//     return leftValue;
+// }
+
+// function returnTopValue(x) {
+//     let topValue = window.getComputedStyle(x).getPropertyValue("top")
+//     topValue = Number.parseInt(topValue.slice(0,-2));
+//     return topValue;
+// }
+
+function returnValue(element, whichValue){
+    let value = window.getComputedStyle(element).getPropertyValue(whichValue)
+    value = Number.parseInt(value.slice(0,-2));
+    return value;
 }
