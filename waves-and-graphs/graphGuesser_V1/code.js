@@ -19,6 +19,17 @@ function generateCordSystem() {                                 // generate coor
             vertNr.style.top = 500-(i*gridFactor) + "px";
             vertNr.textContent = i;
         document.body.appendChild(vertNr);
+
+        const referenceLineX = document.createElement('div');
+            referenceLineX.className = 'reference-line-x';
+            referenceLineX.style.left = (i*gridFactor) + "px";
+        document.body.appendChild(referenceLineX);
+
+        const referenceLineY = document.createElement('div');
+            referenceLineY.className = 'reference-line-y';
+            referenceLineY.style.top = (i*gridFactor) + "px";
+        document.body.appendChild(referenceLineY);
+
     }
 }
 
@@ -56,6 +67,7 @@ function drawTargets() {                                        // draws random 
             newTarget.className = 'target-element';
             newTarget.style.left = Math.floor(Math.random()*450) + 'px';
             newTarget.style.top = Math.floor(Math.random()*450) + 'px';
+            newTarget.style.zIndex = 10;
         area.appendChild(newTarget);
     }    
 }

@@ -1,5 +1,3 @@
-// 201020 this should work but it does not
-
 function createLine() {
 
     for (i=0; i<300; i++) {

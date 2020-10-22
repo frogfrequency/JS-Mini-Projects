@@ -7,6 +7,23 @@
     left: 0px;
 }
 
+.reference-line-x{
+    background-color: rgba(207, 158, 79, 0.534);
+    width: 1px;
+    height: 500px;
+    position: absolute;
+    top: 0px;
+}
+
+.reference-line-y{
+    background-color: rgba(207, 158, 79, 0.534);;
+    width: 500px;
+    height: 1px;
+    position: absolute;
+    left: 0px;
+}
+
+
 #terminal{
     position: absolute;
     top: 500px;
