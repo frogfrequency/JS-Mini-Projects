@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pain_V1</title>
+    <script src="./code.js"></script>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <h3>Welcome to Paint_V1! <br> choose a sheet size and start drawing!</h3>
+    <div style="font-size: 12px;">(currently you can only draw by clicking.. dragging will be added soon!) <br> ... or maybe never</div>
+    <br>
+    <label for="sheet-size">change drawing sheet size</label>
+        <select name="sheet-size" id="size">
+            <option value="50">very small</option>
+            <option value="100">small</option>
+            <option value="200">medium</option>
+            <option value="400">large</option>
+            <option value="800">very large</option>
+            <option value="1600">insanely large</option>
+        </select>
+    <button onclick="generateEmptyPixels()">generate sheet</button>
+    <div id="container"></div>
+    <br>
+    <label for="pen-color">choose your pen color</label>
+        <select name="pen-color" id="pen-color-selector">
+            <option value="red">red</option>
+            <option value="green">green</option>
+            <option value="blue">blue</option>
+            <option value="yellow">yellow</option>
+            <option value="cyan">cyan</option>
+            <option value="magenta">magenta</option>
+            <option value="orange">orange</option>
+            <option value="brown">brown</option>
+            <option value="black">black</option>
+            <option value="white">white</option>
+            <option value="rgba(165, 253, 0, 0.164)"> - eraser - </option>
+        </select>
+</body>
+</html>
