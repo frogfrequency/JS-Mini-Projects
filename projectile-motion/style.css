@@ -1,0 +1,17 @@
+#ball {
+    background-color: blue;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 300px;
+    left: 100px;
+    border-radius: 50%;
+}
+
+#ground {
+    background-color: green;
+    width: 2000px;
+    height: 20px;
+    position: absolute;
+    top: 620px;
+}

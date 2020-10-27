@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>projectile-motion</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./code.js"></script>
+</head>
+<body>
+    <label for="init-v-up">set initial vUp (1-10)</label>
+    <input id='init-v-up' type="number" value=5>
+    <br>
+    <label for="set-gravity">set gravity (0.1 -1)</label>
+    <input id='set-gravity' type="number" value=0.1>
+    <br>
+    <label for="set-v-right">set vRight (0.1-4)</label>
+    <input id='set-v-right' type="number" value=2>
+    <br>
+    <label for="elasticity">ball's coefficient of elasticity(0.1 - 0.85)</label>
+    <input id='elasticity' type="number" value=0.6>
+    <br>
+
+
+
+    <br>
+    <button onclick="gravity()">shoot up</button>
+    <div id="ball"></div>
+    <div id="ground"></div>
+
+    
+</body>
+</html>
