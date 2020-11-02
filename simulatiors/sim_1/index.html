@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sim_1</title>
+    <script src="./code.js"></script>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <button onclick="nextTick()">generate next tick</button>
+    <button onclick="runPause()">run / pause</button>
+    <div id='ball-container'><div id="ball"></div></div>
+    <div id="zero"></div>
+    <div id="control-terminal">
+        <span class="terminal-element, bold">Tick</span>
+            <span id="tick-counter" class="bold">= -</span>
+        <br>
+        <br>
+        <span class="terminal-element">X</span>
+            <span id="current-ballX">= -</span>
+        <br>
+        <span class="terminal-element">v X</span>
+            <span id="current-ballVX">= -</span>
+        <br><br>
+        <span class="terminal-element">Y</span>
+            <span id="current-ballY">= -</span>
+        <br>
+        <span class="terminal-element">v Y</span>
+            <span id="current-ballVY">= -</span>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+* {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#zero {
+    background-color: red;
+    width: 2px; 
+    height: 2px;
+    left: 100px;
+    top: 100px;
+    position: absolute;
+}
+
+#ball {
+    background-color: blue;
+    width: 16px;
+    height: 16px;
+    left: 0px;
+    top: 0px;
+    position: absolute;
+    border-radius: 50%;
+}
+#ball-container {
+    left: 92px;
+    top: 92px;
+    position: absolute;
+}
+
+
+#control-terminal {
+    background-color: lightgrey;
+    width: 300px;
+    height: 150px;
+    position: relative;
+    top: 200px;
+}
+
+.bold {
+    font-weight: 900;
+}
+
+.terminal-element{
+    display: inline-block;
+    width: 30px;
+}

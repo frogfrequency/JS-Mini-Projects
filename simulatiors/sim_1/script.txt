@@ -1,0 +1,54 @@
+maybe make a simulation without gravity acceleration
+maybe something like a billiard-simulator where the ball has to 
+bounce of walls correctly...
+
+how detect the bounce angle?? 
+--> possible approach: on moving objects always remember the last
+    ticks position --> when comparing these two position the movement-
+    direction can be derived from it. do this in the physics world ("2."),
+    always remember last position but only calculate moving-direction
+    when a bounce occurs
+
+// needed variables
+
+    global:
+
+var simulation speed? smth like tick-rate
+
+
+
+    for objects (work with classes for the objects/balls/walls.. maybe?)
+
+vRight --> named vX (can also be negative when moving to the left)
+
+vUp --> name: vY
+    so the positions on every tick can be derived from vX and vY?
+
+    
+how detect bounce angle?
+    --> the bounce angle inverts certain vX and vY values
+
+
+
+there need to be two separate systems:
+
+    "1." physics caluculation with Float-Point numbers where everything
+    is first calculated. even the positions? probably pageYOffset
+
+    "2." the second system only takes the necessary values and
+    translates them into even pixels. (lots of Math.floor needed)
+
+    second system is always derived from the first.. never
+    the other way around?? 1. system always is >= the 2. system
+
+
+
+// plan of action:
+
+1. define necessary variables
+
+2. build system "2." that visualizes the parameters(variables)
+
+3. start manipulating the parameters (progress can be observed,
+    because the visualization is already present)
+
