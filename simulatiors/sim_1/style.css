@@ -18,12 +18,21 @@
     left: 0px;
     top: 0px;
     position: absolute;
-    border-radius: 50%;
+    z-index: 100;
 }
-#ball-container {
-    left: 92px;
-    top: 92px;
+#container {
+    left: 100px;
+    top: 100px;
     position: absolute;
+}
+
+.wall-element {
+    background-color: black;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 40px;
+    left: 10px;
 }
 
 
