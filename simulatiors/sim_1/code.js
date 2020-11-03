@@ -1,6 +1,8 @@
 // 201120 16:23 the four "sensors" of the ball dont work properly
 // maybe only the sensor 0 (North) works
 
+// detection now works somewhat, might be off a few pixels cause of >= issues
+
 
 // physics section
 var tickCounter = 0;
@@ -39,24 +41,23 @@ function nextTick() {
 
 function collisionCheck() {
     for (i=0; i<walls.length; i++) {
-        var xCord = walls[i][0];
-        var yCord = walls[i][1];
-        console.log(xCord + ' passed in singleWallCheck ' + yCord);
-        singleWallCheck(xCord, yCord);
+        var xCordW = walls[i][0];
+        var yCordW = walls[i][1];
+        // console.log(xCord + ' passed in singleWallCheck ' + yCord);
+        singleWallCheck(xCordW, yCordW);
     }
 }
 
-function singleWallCheck(xValue, yValue) {
-    var correctors = [ [8,0], [8,8], [8,16], [0,8] ] // corrects the balls standard x and y values for its north,east,south,west borders
+function singleWallCheck(xW, yW) {
+    var correctors = [ [8,0], [16,8], [8,16], [0,8] ] // corrects the balls standard x and y values for its north,east,south,west borders
+    console.log('______TICK: ' + tickCounter + ' current ballX and and ballY :' + ballX + ', ' + ballY);
     for (i=0; i<4; i++) {
-        console.log('singleWallCheck #' + i + ':');
-        var x = xValue + correctors[i][0];
-        var y = yValue + correctors[i][1];
-        console.log('corrected Values: ' + x + ', ' + y);
+        var xBC = ballX + correctors[i][0]; // x, Ball, Corrected
+        var yBC = ballY + correctors[i][1]; // y, Ball, Corrected
+        console.log('singleWallCheck #' + i + 'corrected ball-values: ' + xBC + ', ' + yBC);
 
-        if (x < ballX && ballX < x + wW && y < ballY && ballY < y + wW) {
-            console.log('Bump!');
-            console.log(i);
+        if (xW < xBC && xBC < xW + wW && yW < yBC && yBC < yW + wW) {
+            console.log('Bump!' + i);
         }
     }
 }
