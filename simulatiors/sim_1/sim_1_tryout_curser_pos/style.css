@@ -1,0 +1,10 @@
+#field{
+    background-color: lemonchiffon;
+    width: 400px;
+    height: 400px;
+}
+
+#output {
+    font-size: 30px;
+    color: blue;
+}

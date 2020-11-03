@@ -8,17 +8,22 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <button onclick="generateWalls()">generate walls from walls arr</button>
-    <br>
-    <button onclick="nextTick()">generate next tick</button>
-    <button onclick="runPause()">run / pause</button>
-    <div id='container'>
-        <div id="ball"></div>
+
+    <div id="game-field" onclick="pushWall(event)">
+        <div id="wall-container">
+
+        </div>
+        <div id='ball-container'>
+            <div id='ball'></div>
+        </div>
     </div>
-    <div id="zero"></div>
+    <div>click the field to set up walls!</div>
+
     <div id="control-terminal">
-        <span class="terminal-element, bold">Tick</span>
-            <span id="tick-counter" class="bold">= -</span>
+        <div class="bold-title">ball control display unit</div>
+        <br>
+        <span class="terminal-element">Tick</span>
+            <span id="tick-counter">= -</span>
         <br>
         <br>
         <span class="terminal-element">X</span>
@@ -32,9 +37,12 @@
         <br>
         <span class="terminal-element">v Y</span>
             <span id="current-ballVY">= -</span>
-
-
-
     </div>
+    <button onclick="generateWalls()">generate walls from walls arr</button>
+    <br>
+    <button onclick="nextTick()">generate next tick</button>
+    <button onclick="runPause()">run / pause</button>
+    <button onclick="resetBall()">reset ball</button>
+    <button onclick="resetWalls()">reset walls</button>
 </body>
 </html>
