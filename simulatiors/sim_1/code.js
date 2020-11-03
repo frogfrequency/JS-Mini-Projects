@@ -13,7 +13,7 @@ var ballY = 0;
 var ballVY = 2;
 var wW = 30; // short for wall-width --> if you change here also change in style.css!
 
-var walls = [[40,100]];
+var walls = [ [40,100], [60, 0], [120, 90], [-35, 294],  ];
 
 var interval = 0;
 var intervalOn = 0;
@@ -40,10 +40,11 @@ function nextTick() {
 }
 
 function collisionCheck() {
-    for (i=0; i<walls.length; i++) {
-        var xCordW = walls[i][0];
-        var yCordW = walls[i][1];
-        // console.log(xCord + ' passed in singleWallCheck ' + yCord);
+    for (j=0; j<walls.length; j++) {
+        console.log('___________ wall segement Nr. ' + j + '/' + walls.length + 'passed');
+        var xCordW = walls[j][0];
+        var yCordW = walls[j][1];
+        console.log('_____________ following wall passed in singleWallCheck' + xCordW + ', ' + yCordW);
         singleWallCheck(xCordW, yCordW);
     }
 }
@@ -56,9 +57,17 @@ function singleWallCheck(xW, yW) {
         var yBC = ballY + correctors[i][1]; // y, Ball, Corrected
         console.log('singleWallCheck #' + i + 'corrected ball-values: ' + xBC + ', ' + yBC);
 
-        if (xW < xBC && xBC < xW + wW && yW < yBC && yBC < yW + wW) {
-            console.log('Bump!' + i);
+        if (xW <= xBC && xBC <= xW + wW && yW <= yBC && yBC <= yW + wW) {
+            invertTrajectory(i);
         }
+    }
+}
+
+function invertTrajectory(sensorIdx) {
+    if (sensorIdx === 0 || sensorIdx === 2) {
+        ballVY = ballVY * (-1);
+    } else if (sensorIdx === 1 || sensorIdx === 3){
+        ballVX = ballVX * (-1);
     }
 }
 

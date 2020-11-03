@@ -19,6 +19,7 @@
     top: 0px;
     position: absolute;
     z-index: 100;
+    border-radius: 50%;
 }
 #container {
     left: 100px;
