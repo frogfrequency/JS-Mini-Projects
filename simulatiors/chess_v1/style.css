@@ -1,0 +1,25 @@
+#container {
+    border-style: solid;
+    width: 640px;
+    height: 640px;
+    font-size: 0;
+}
+
+.square {
+    background-color: red;
+    width: 80px;
+    height: 80px;
+    display: inline-block;
+}
+
+.white-square{
+    background-color: lemonchiffon;
+}
+
+.black-square{
+    background-color: grey;
+}
+
+#container :hover{
+    background-color: orange;
+}

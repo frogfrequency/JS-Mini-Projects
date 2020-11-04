@@ -29,7 +29,7 @@ function resetBall() {
     ballX = 0;
     ballVX = 1;
     ballY = 0;
-    ballVY = 2;
+    ballVY = 1;
     nextTick();
 }
 
