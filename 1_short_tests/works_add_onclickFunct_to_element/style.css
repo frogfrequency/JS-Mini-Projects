@@ -1,0 +1,25 @@
+#container{
+    background-color: grey;
+
+}
+
+.super-class{
+    background-color: forestgreen;
+    width: 50px;
+    height: 50px;
+}
+
+.super-class:hover {
+    background-color: rgb(41, 175, 41);
+}
+
+
+.super-class2{
+    background-color: mediumblue;
+    width: 50px;
+    height: 50px;
+}
+
+.super-class2:hover {
+    background-color: rgb(42, 39, 231);
+}

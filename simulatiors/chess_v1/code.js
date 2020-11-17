@@ -17,9 +17,14 @@ function createBoard() {
         } else { 
             newSquare.className = "square white-square";
         }
+
+
+        newSquare.addEventListener("click", squareClick);
+
         document.getElementById('container').appendChild(newSquare);
     }
 }
+
 
 
 // chess logic
@@ -31,7 +36,22 @@ var fieldArr = ['bR','bK','bB','bQ','bKi','bB','bK','bR',
     ,,,,,,,,
     ,,,,,,,,
     'wP','wP','wP','wP','wP','wP','wP','wP',
-    'wR','wK','wB','wQ','wKi','wB','wK','wR']
+    'wR','wK','wB','wQ','wKi','wB','wK','wR'];
+
+function squareClick() {
+    const fieldID = this.id;
+    const fieldContent = fieldArr[fieldID];
+    console.log('you just clicked on the field with id: ' + fieldID + ' where a ' + fieldArr[fieldID] + ' is standing');
+
+    possibleMoves();
+}
+
+function possibleMoves() {
+
+
+    
+    console.log('i am inside the function that wants to calculate the possible moves');
+}
 
 
 
@@ -103,11 +123,4 @@ function generateFieldfromArr() {
 
 
 function testFunction(){
-    var x = 'hello';
-    if (x === 'hello') {
-        console.log(fieldArr[63]);
-    }
-
-
-
 }
