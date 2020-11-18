@@ -1,0 +1,7 @@
+type clg then tab to have a console.log
+
+ctrl + shift + k        deletes the whole line
+
+just ctrl+c somewhere on the line without marking anything copys the whole line
+
+when something is marked ctrl + d  --> jumps to the next occurence and lets you change both at the same time

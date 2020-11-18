@@ -1,4 +1,107 @@
-function createBoard() {
+
+// chess logic
+
+var fieldArr = ['bR','bK','bB','bQ','bKi','bB','bK','bR',
+    'bP','bP','bP','bP','bP','bP','bP','bP',
+    ,,,,,,,,
+    ,,,,,,,,
+    ,,,,,,,,
+    ,,,,,,,,
+    'wP','wP','wP','wP','wP','wP','wP','wP',
+    'wR','wK','wB','wQ','wKi','wB','wK','wR'];
+
+function squareClick() {
+    const fieldID = this.id;
+    const fieldContent = fieldArr[fieldID];
+    console.log('you just clicked on the field with id: ' + fieldID + ' where a ' + fieldArr[fieldID] + ' is standing');
+
+    possibleMoves(fieldID, fieldContent);
+}
+
+function possibleMoves(id, piece) {
+    console.log('i am inside the function that wants to calculate the possible moves');
+
+    if (piece === undefined){
+        alert('square empty!')
+    } else {
+        var color = returnColor(piece);
+        var pieceType = returnPieceType(piece);
+
+        console.log('_____returnColor returns: ' + color);          // control logs for color and type
+        console.log('_____returnPieceType returns: ' + pieceType);
+
+
+        var moveArr = calcMoves(color, pieceType, id);
+        console.log('possible moves for this piece: ' + moveArr);
+    }
+
+
+    // highlight the possible moves for this piece
+    // ready up for moving this piece to the wanted field
+}
+
+function returnColor(input) {
+    return input.charAt(0);
+}
+
+function returnPieceType(input) {
+    return input.substring(1);
+} 
+
+function calcMoves(color, pieceType, id) { // function that should return an array of ids where the piece can go
+    switch(pieceType) {
+        case 'P':
+            return [16,24]; // test-value / not yet defined
+        case 'R':
+            return rookMoves(color, id);
+        case 'K':
+            return [11,16,18]; // test-value / not yet defined
+        case 'B':
+            return [9,11,16,20,29,38,47]; // test-value / not yet defined
+        case 'Ki':
+            return [3,5,11,12,13]; // test-value / not yet defined
+        case 'Q':
+            return [11,19,27,35,43,51,59, 12,21,30,39, 10, 17, 24]; // test-value / not yet defined
+        default:
+        alert('MAJOR ERROR: invalid pieceType passed into calcMoves --> should never happen!')
+      }
+}
+
+// chess logic      // piece-move-functions
+                
+function rookMoves(color, id) {
+    var outputMoves = [];
+    const position = id;
+    
+    for (i=0; i<7; i++) { // to the right check
+        
+
+    }
+
+
+    return "halloooo";
+}
+
+
+// chess logic      // piece-move-functions     // prerequisites
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+// display
+
+
+function createBoard() { // creates the board (onload)
 
     var offset = 0;
 
@@ -27,40 +130,8 @@ function createBoard() {
 
 
 
-// chess logic
 
-var fieldArr = ['bR','bK','bB','bQ','bKi','bB','bK','bR',
-    'bP','bP','bP','bP','bP','bP','bP','bP',
-    ,,,,,,,,
-    ,,,,,,,,
-    ,,,,,,,,
-    ,,,,,,,,
-    'wP','wP','wP','wP','wP','wP','wP','wP',
-    'wR','wK','wB','wQ','wKi','wB','wK','wR'];
-
-function squareClick() {
-    const fieldID = this.id;
-    const fieldContent = fieldArr[fieldID];
-    console.log('you just clicked on the field with id: ' + fieldID + ' where a ' + fieldArr[fieldID] + ' is standing');
-
-    possibleMoves();
-}
-
-function possibleMoves() {
-
-
-    
-    console.log('i am inside the function that wants to calculate the possible moves');
-}
-
-
-
-
-
-
-// display
-
-function generateFieldfromArr() {
+function generateFieldfromArr() { // creates inserts pieces from the fieldArr
     for (i=0; i<64; i++) {
         var currentContent = fieldArr[i];
         var currentField = document.getElementById(i);
@@ -122,5 +193,14 @@ function generateFieldfromArr() {
 }
 
 
+
+
+
+//____________________TRYOUT-FUNCTION HERE_________________//
+
+
 function testFunction(){
+    console.log(fieldArr);
 }
+
+
