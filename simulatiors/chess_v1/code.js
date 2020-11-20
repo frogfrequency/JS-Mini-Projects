@@ -1,25 +1,34 @@
 
+
+
+// import
+
+import {rookMoves, bishopMoves} from './pieceMoveFunctions.js';
+
+
+import {returnColor} from './globalFunctions.js';
+
 // chess logic
+
 
 var fieldArr = ['bR','bK','bB','bQ','bKi','bB','bK','bR',
     'bP','bP','bP','bP','bP','bP','bP','bP',
-    ,,,,,,,,
-    ,,,,,,,,
-    ,,,,,,,,
-    ,,,,,,,,
+    'bB','bB',,,,'bB',,,
+    'bB',,,,,'wB',,,
+    ,,,'bB',,,,,
+    ,,'wQ',,,,,'wR',
     'wP','wP','wP','wP','wP','wP','wP','wP',
     'wR','wK','wB','wQ','wKi','wB','wK','wR'];
 
 function squareClick() {
-    const fieldID = this.id;
+    const fieldID = parseInt(this.id); // since the id is returned as a string we have to parseInt it
     const fieldContent = fieldArr[fieldID];
-    console.log('you just clicked on the field with id: ' + fieldID + ' where a ' + fieldArr[fieldID] + ' is standing');
+    console.log('------------------------------------------\nyou just clicked on the field with id: ' + fieldID + ' where a ' + fieldArr[fieldID] + ' is standing');
 
     possibleMoves(fieldID, fieldContent);
 }
 
 function possibleMoves(id, piece) {
-    console.log('i am inside the function that wants to calculate the possible moves');
 
     if (piece === undefined){
         alert('square empty!')
@@ -30,18 +39,16 @@ function possibleMoves(id, piece) {
         console.log('_____returnColor returns: ' + color);          // control logs for color and type
         console.log('_____returnPieceType returns: ' + pieceType);
 
-
-        var moveArr = calcMoves(color, pieceType, id);
+        var moveArr = [];
+        moveArr = calcMoves(color, pieceType, id);
         console.log('possible moves for this piece: ' + moveArr);
+
+        colorizePossible(moveArr);
     }
 
 
     // highlight the possible moves for this piece
     // ready up for moving this piece to the wanted field
-}
-
-function returnColor(input) {
-    return input.charAt(0);
 }
 
 function returnPieceType(input) {
@@ -53,11 +60,11 @@ function calcMoves(color, pieceType, id) { // function that should return an arr
         case 'P':
             return [16,24]; // test-value / not yet defined
         case 'R':
-            return rookMoves(color, id);
+            return rookMoves(color, id, fieldArr);
         case 'K':
             return [11,16,18]; // test-value / not yet defined
         case 'B':
-            return [9,11,16,20,29,38,47]; // test-value / not yet defined
+            return bishopMoves(color, id, fieldArr); // test-value / not yet defined
         case 'Ki':
             return [3,5,11,12,13]; // test-value / not yet defined
         case 'Q':
@@ -69,18 +76,7 @@ function calcMoves(color, pieceType, id) { // function that should return an arr
 
 // chess logic      // piece-move-functions
                 
-function rookMoves(color, id) {
-    var outputMoves = [];
-    const position = id;
-    
-    for (i=0; i<7; i++) { // to the right check
-        
 
-    }
-
-
-    return "halloooo";
-}
 
 
 // chess logic      // piece-move-functions     // prerequisites
@@ -101,11 +97,11 @@ function rookMoves(color, id) {
 // display
 
 
-function createBoard() { // creates the board (onload)
+function createBoard() { // creates the board
 
     var offset = 0;
 
-    for (i=0; i<64; i++) {
+    for (let i=0; i<64; i++) {
         var newSquare = document.createElement('div');
         newSquare.id = i;
         if ( (i)%8 === 0) {
@@ -120,23 +116,16 @@ function createBoard() { // creates the board (onload)
         } else { 
             newSquare.className = "square white-square";
         }
-
-
         newSquare.addEventListener("click", squareClick);
 
         document.getElementById('container').appendChild(newSquare);
     }
 }
 
-
-
-
 function generateFieldfromArr() { // creates inserts pieces from the fieldArr
-    for (i=0; i<64; i++) {
+    for (let i=0; i<64; i++) {
         var currentContent = fieldArr[i];
         var currentField = document.getElementById(i);
-        console.log('whichfield: ' + currentField);
-        console.log('currentContent: ' + currentContent);
 
         var img = document.createElement('img');
         
@@ -194,13 +183,68 @@ function generateFieldfromArr() { // creates inserts pieces from the fieldArr
 
 
 
+function colorizePossible (arr) {
+    
+        arr.forEach(element => {
+            var x = document.getElementById(element);
+            x.style.backgroundColor = "red";
+        });
+    
+}
 
+
+
+//__________________id-overlay (can be removed at the end)
+
+function createOverlay() {
+    for (let i=0; i<64; i++){
+        var xOffset = (i%8) * 80 + 11;
+        var yOffset = Math.floor(i/8) * 80 + 11;
+
+        var newNr = document.createElement('div');
+
+        
+        newNr.style.left = xOffset + 'px';
+        newNr.style.top = yOffset + 'px';
+        newNr.style.position = 'absolute';
+        newNr.innerHTML = i;
+        console.log(newNr);
+
+        let theContainer = document.getElementById('over-lay-container');
+        theContainer.appendChild(newNr);
+        console.log(theContainer);
+    }
+}
 
 //____________________TRYOUT-FUNCTION HERE_________________//
 
 
 function testFunction(){
-    console.log(fieldArr);
+    console.log('i work a bit');
 }
 
 
+//_____________________test-boards-arrs__________________//
+
+            //normal field
+// var fieldArr = ['bR','bK','bB','bQ','bKi','bB','bK','bR',
+//     'bP','bP','bP','bP','bP','bP','bP','bP',
+//     ,,,,,,,,
+//     ,,,,,,,,
+//     ,,,,,,,,
+//     ,,,,,,,,
+//     'wP','wP','wP','wP','wP','wP','wP','wP',
+//     'wR','wK','wB','wQ','wKi','wB','wK','wR'];
+
+
+
+
+// eventlisteners sandy-style
+
+document.getElementById('generateFieldBtn').addEventListener('click', generateFieldfromArr);
+document.getElementById('testFunctionBtn').addEventListener('click', testFunction);
+
+
+createBoard();
+createOverlay();
+generateFieldfromArr();

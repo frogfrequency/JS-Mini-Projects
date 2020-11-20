@@ -1,6 +1,6 @@
 #container {
     border-style: solid;
-    width: 640px;
+    width: 640px; /* 8x80px + 8x2*2px border */
     height: 640px;
     font-size: 0;
 }
