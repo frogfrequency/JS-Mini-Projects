@@ -3,7 +3,7 @@
 
 // import
 
-import {rookMoves, bishopMoves} from './pieceMoveFunctions.js';
+import {rookMoves, bishopMoves, knightMoves, queenMoves, kingMoves, pawnMoves} from './pieceMoveFunctions.js';
 
 
 import {returnColor} from './globalFunctions.js';
@@ -11,19 +11,25 @@ import {returnColor} from './globalFunctions.js';
 // chess logic
 
 
-var fieldArr = ['bR','bK','bB','bQ','bKi','bB','bK','bR',
-    'bP','bP','bP','bP','bP','bP','bP','bP',
-    'bB','bB',,,,'bB',,,
-    'bB',,,,,'wB',,,
-    ,,,'bB',,,,,
-    ,,'wQ',,,,,'wR',
-    'wP','wP','wP','wP','wP','wP','wP','wP',
-    'wR','wK','wB','wQ','wKi','wB','wK','wR'];
+var fieldArr = [
+    'bR','bK','bK',,'bKi','bB',,'bR',
+    'bKi','bP','wP','bP',,,'bP',,
+    'wP','wQ',,'wR',,'bK',,,
+    'bQ',,,,,'wQ',,,
+    ,,,'bQ',,,'bQ','wB',
+    ,'wP','wK',,,'bK','wK','bK',
+    'wP',,'wP',,'wP','bKi','wP','wP',
+    'wR',,'wB','wQ','wKi',,'wK','wR'
+];
 
 function squareClick() {
+    document.getElementById('container').innerHTML = '';
+    createBoard();
+    createOverlay();
+    generateFieldfromArr();
     const fieldID = parseInt(this.id); // since the id is returned as a string we have to parseInt it
     const fieldContent = fieldArr[fieldID];
-    console.log('------------------------------------------\nyou just clicked on the field with id: ' + fieldID + ' where a ' + fieldArr[fieldID] + ' is standing');
+    console.log('------------------------------------------\n *squareClick* you just clicked on the field with id: ' + fieldID + ' where a ' + fieldArr[fieldID] + ' is standing');
 
     possibleMoves(fieldID, fieldContent);
 }
@@ -36,12 +42,12 @@ function possibleMoves(id, piece) {
         var color = returnColor(piece);
         var pieceType = returnPieceType(piece);
 
-        console.log('_____returnColor returns: ' + color);          // control logs for color and type
-        console.log('_____returnPieceType returns: ' + pieceType);
+        console.log('*possibleMoves*_____returnColor returns: ' + color);          // control logs for color and type
+        console.log('*possibleMoves*_____returnPieceType returns: ' + pieceType);
 
         var moveArr = [];
         moveArr = calcMoves(color, pieceType, id);
-        console.log('possible moves for this piece: ' + moveArr);
+        console.log('*possibleMoves* possible moves for this piece: ' + moveArr);
 
         colorizePossible(moveArr);
     }
@@ -58,17 +64,17 @@ function returnPieceType(input) {
 function calcMoves(color, pieceType, id) { // function that should return an array of ids where the piece can go
     switch(pieceType) {
         case 'P':
-            return [16,24]; // test-value / not yet defined
+            return pawnMoves(color, id, fieldArr);
         case 'R':
             return rookMoves(color, id, fieldArr);
         case 'K':
-            return [11,16,18]; // test-value / not yet defined
+            return knightMoves(color, id, fieldArr);
         case 'B':
-            return bishopMoves(color, id, fieldArr); // test-value / not yet defined
+            return bishopMoves(color, id, fieldArr);
         case 'Ki':
-            return [3,5,11,12,13]; // test-value / not yet defined
+            return kingMoves(color, id, fieldArr); // test-value / not yet defined
         case 'Q':
-            return [11,19,27,35,43,51,59, 12,21,30,39, 10, 17, 24]; // test-value / not yet defined
+            return queenMoves(color, id, fieldArr);
         default:
         alert('MAJOR ERROR: invalid pieceType passed into calcMoves --> should never happen!')
       }
@@ -208,11 +214,9 @@ function createOverlay() {
         newNr.style.top = yOffset + 'px';
         newNr.style.position = 'absolute';
         newNr.innerHTML = i;
-        console.log(newNr);
 
         let theContainer = document.getElementById('over-lay-container');
         theContainer.appendChild(newNr);
-        console.log(theContainer);
     }
 }
 
