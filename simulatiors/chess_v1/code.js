@@ -6,20 +6,22 @@
 import {rookMoves, bishopMoves, knightMoves, queenMoves, kingMoves, pawnMoves} from './pieceMoveFunctions.js';
 
 
-import {returnColor} from './globalFunctions.js';
+import {returnColor, wKiMoved, wRLeftMoved, wRRightMoved, bKiMoved, bRLeftMoved, bRRightMoved} from './globalFunctions.js';
+
+
 
 // chess logic
 
 
 var fieldArr = [
-    'bR','bK','bK',,'bKi','bB',,'bR',
-    'bKi','bP','wP','bP',,,'bP',,
+    'bR',,,,'bKi',,,'bR',
+    'bB','bP','wP','bP',,,'bP',,
     'wP','wQ',,'wR',,'bK',,,
     'bQ',,,,,'wQ',,,
     ,,,'bQ',,,'bQ','wB',
     ,'wP','wK',,,'bK','wK','bK',
-    'wP',,'wP',,'wP','bKi','wP','wP',
-    'wR',,'wB','wQ','wKi',,'wK','wR'
+    'wP',,'wP',,'wP','bB','wP','wP',
+    'wR',,,,'wKi',,,'wR'
 ];
 
 function squareClick() {
@@ -101,7 +103,6 @@ function calcMoves(color, pieceType, id) { // function that should return an arr
 
 
 // display
-
 
 function createBoard() { // creates the board
 

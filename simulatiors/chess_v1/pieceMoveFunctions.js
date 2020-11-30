@@ -2,10 +2,12 @@
 
 
 // imports
-import {returnColor} from './globalFunctions.js';
+import {returnColor, wKiMoved, wRLeftMoved, wRRightMoved, bKiMoved, bRLeftMoved, bRRightMoved} from './globalFunctions.js';
 
 
 // logic
+
+// logic        // special memory (castle, en passant)
 
 // logic        // rook
 
@@ -63,6 +65,7 @@ export function rookMoves(color, idx, arr) {
     }
     return outputMoves;
 }
+
 
 // logic        // bishop
 
@@ -178,6 +181,10 @@ export function knightMoves(color, idx, arr) {  // this approach might be very s
 
 }
 
+
+
+// logic        // Queen
+
 export function queenMoves(color, idx, arr) {
     let queenOutputMoves = rookMoves(color, idx, arr);
     let fromBishopMoves = bishopMoves(color, idx, arr);
@@ -187,6 +194,10 @@ export function queenMoves(color, idx, arr) {
     }
     return queenOutputMoves;
 }
+
+
+
+// logic        // King
 
 export function kingMoves(color, idx, arr) {
     let outputMoves = [];
@@ -199,7 +210,7 @@ export function kingMoves(color, idx, arr) {
         if (0 <= nextTarget && nextTarget < 64){
             let idxRem = idx%8;
             let tarRem = nextTarget%8;
-            if (idxRem === tarRem || idxRem + 1 === tarRem || idxRem - 1 === tarRem){
+            if (idxRem === tarRem || idxRem + 1 === tarRem || idxRem - 1 === tarRem) {
                 allSteps.push(nextTarget);
             }
         }
@@ -217,8 +228,48 @@ export function kingMoves(color, idx, arr) {
         }
     }
 
+    castleCheck(color, arr, outputMoves);
+
     return outputMoves;
 }
+
+
+// logic        // King         // castleCheck
+
+function castleCheck(color, arr, outputMoves) {
+        // for white
+    if (color === 'w') {
+        if (wKiMoved === false && wRLeftMoved === false) {
+            if (arr[61] === undefined && arr[62] === undefined) {
+                outputMoves.push(62);
+            }
+        }
+        if (wKiMoved === false && wRRightMoved === false) {
+            if (arr[57] === undefined && arr[58] === undefined && arr[59] === undefined) {
+                outputMoves.push(58);
+            }
+        }
+    }
+        // for black
+    if (color === 'b') {
+        if (bKiMoved === false && bRLeftMoved === false) {
+            if (arr[5] === undefined && arr[6] === undefined) {
+                outputMoves.push(6);
+            }
+        }
+        if (bKiMoved === false && bRRightMoved === false) {
+            if (arr[1] === undefined && arr[2] === undefined && arr[3] === undefined) {
+                outputMoves.push(2);
+            }
+        }
+    }
+    
+}
+
+
+
+
+// logic        // Pawn
 
 export function pawnMoves(color, idx, arr) {
     let outputMoves = [];
@@ -256,11 +307,6 @@ export function pawnMoves(color, idx, arr) {
             }
         }
     }
-
-
-
-
-
 
     return outputMoves;
 }
