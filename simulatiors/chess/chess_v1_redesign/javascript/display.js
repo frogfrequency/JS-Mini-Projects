@@ -19,7 +19,7 @@ function createEmptyBoard() {
 
 function createOverlay() {
     let allSquares = document.querySelectorAll('.square');
-        for (let i=0; i<64; i++){
+        for (let i=0; i<64; i++) {
             var xOffset = (i%8) * 80 + 11;
             var yOffset = Math.floor(i/8) * 80 + 11;
             var newNr = document.createElement('div');
@@ -103,4 +103,14 @@ function colorizeLegalMoves(arr) {
                 x.style.backgroundColor = "red";
         }
     });
+}
+
+
+
+function colorizeSpecialCaseEnPassant(idToColor) {
+    if (isOnField(idToColor)) {
+        var x = document.getElementById(idToColor);
+        x.style.backgroundColor = "blue";
+
+    }
 }

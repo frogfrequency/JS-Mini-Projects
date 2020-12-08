@@ -1,12 +1,15 @@
 // variables
 
+let specialCaseEnPassant = 0;
+let enPassantPlaceHolder = undefined;
+
 let legalMovesFor = []
 let legalMoveIDs = [];
 let halfMoveCounter = 0;
 
-let gameArr = [,,,,,,,,,,,,,,,,,,,,,
-
-    'bR','bK','bB','bKi','bQ','bB','bK','bR'
+let gameArr = [
+,,,,,,,,,,,,,,,,,,
+,,,         'bR','bK','bB','bQ','bKi','bB','bK','bR'
 ,,,         'bP','bP','bP','bP','bP','bP','bP','bP'     
 ,,,         ,,,,,,,     
 ,,,         ,,,,,,,
@@ -14,7 +17,7 @@ let gameArr = [,,,,,,,,,,,,,,,,,,,,,
 ,,,         ,,,,,,,
 ,,,         'wP','wP','wP','wP','wP','wP','wP','wP'
 ,,,         'wR','wK','wB','wQ','wKi','wB','wK','wR'
-    ,,,,,,,,,,,,,,,,,,,,,,       
+,,,,,,,,,,,,,,,,,,,,,,      
 ];
 
 // logic
@@ -61,6 +64,7 @@ function squareClicked() {
         resetLegalMoves();
         refreshBoard();
         console.log(`now is the clicked colors turn yes`);
+        legalMovesFor = clickedFieldID;
         setLegalMoves(clickedFieldID, clickedColor, clickedPiece);
         
         // evaluate legal moves and assign them to legalMoves set legalMovesFor too
@@ -71,12 +75,26 @@ function squareClicked() {
 
 
 function makeMove(cID, movesFor) {
+    
+    enPassantPlaceHolder = 0;
+    if (specialCaseEnPassant === cID+10 || specialCaseEnPassant === cID-10) {
+        enPassantPlaceHolder = specialCaseEnPassant;
+    }
+    
+    specialCaseEnPassant = 0;
     gameArr[cID] = gameArr[movesFor];
-    gameArr[movesFor] = '';
+    gameArr[movesFor] = undefined;
     refreshBoard();
+    colorizeSpecialCaseEnPassant(enPassantPlaceHolder);
     halfMoveCounter++;
 }
 
+
+
+
+function castle() {
+
+}
 
 
 
@@ -159,5 +177,53 @@ function testFunction2() {
     console.log(returnPiece(gameArr[95]));
 };
 
+document.getElementById('refresh-button').addEventListener('click', refreshBoard);
+
+document.getElementById('logGameArr-button').addEventListener('click', logGameArr);
+
+function logGameArr() {
+    for(let i=0; i<99; i++) {
+        // if (isOnField(i)) {
+            console.log(i + ': ' + gameArr[i]);
+        // }
+    }
+};
 
 
+
+
+
+
+
+
+
+
+
+//////////////////////////////// sample gamearrays
+
+// ,,,,,,,,,,,,,,,,,,
+// ,,,         'bR','bK','bB','bQ','bKi','bB','bK','bR'
+// ,,,         'bP','bP','bP','bP','bP','bP','bP','bP'     
+// ,,,         ,,,,,,,     
+// ,,,         ,,,,,,,
+// ,,,         ,,,,,,,
+// ,,,         ,,,,,,,
+// ,,,         'wP','wP','wP','wP','wP','wP','wP','wP'
+// ,,,         'wR','wK','wB','wQ','wKi','wB','wK','wR'
+// ,,,,,,,,,,,,,,,,,,,,,,
+
+
+
+
+
+
+// ,,,,,,,,,,,,,,,,,,
+// ,,,         'bR',,,,'bKi',,,'bR'
+// ,,,         ,'bP','bB',,'bQ',,'bP','bP'     
+// ,,,         ,,,,,,,'bB'     
+// ,,,         'bQ',,,'wB',,,,'bP'
+// ,,,         ,,,,'wKi','wP','wB',
+// ,,,         ,,'bP',,,,'wP','bKi'
+// ,,,         'wP','wP','wQ','wP','wP',,'wQ','wP'
+// ,,,         'wR',,,,'wKi',,,'wR'
+// ,,,,,,,,,,,,,,,,,,,,,,       
