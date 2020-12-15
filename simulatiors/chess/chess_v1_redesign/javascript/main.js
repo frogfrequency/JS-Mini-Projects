@@ -7,17 +7,20 @@ let legalMovesFor = []
 let legalMoveIDs = [];
 let halfMoveCounter = 0;
 
+let observedByWhite = []; // watch out for pawns which only observe diagonal
+let observedByBlack = [];
+
 let gameArr = [
 ,,,,,,,,,,,,,,,,,,
-,,,         'bR','bK','bB','bQ','bKi','bB','bK','bR'
-,,,         'bP','bP','bP','bP','bP','bP','bP','bP'     
-,,,         ,,,,,,,     
-,,,         ,,,,,,,
-,,,         ,,,,,,,
-,,,         ,,,,,,,
-,,,         'wP','wP','wP','wP','wP','wP','wP','wP'
-,,,         'wR','wK','wB','wQ','wKi','wB','wK','wR'
-,,,,,,,,,,,,,,,,,,,,,,      
+,,,         'bR',,'wK',,'bKi',,,'bR'
+,,,         ,'bP','bB',,'bQ',,'bP','bP'     
+,,,         ,,,,,,,'bB'     
+,,,         'bQ',,,'wB',,,,'bP'
+,,,         ,,,,'wKi','wP','wB',
+,,,         ,,'bP',,,,'wP','bKi'
+,,,         'wP','wP','wQ','wP','wP',,'wQ','wP'
+,,,         'wR',,,,'wKi','bK',,'wR'
+,,,,,,,,,,,,,,,,,,,,,,       
 ];
 
 // logic
@@ -65,12 +68,9 @@ function squareClicked() {
         refreshBoard();
         console.log(`now is the clicked colors turn yes`);
         legalMovesFor = clickedFieldID;
-        setLegalMoves(clickedFieldID, clickedColor, clickedPiece);
-        
-        // evaluate legal moves and assign them to legalMoves set legalMovesFor too
+        legalMoveIDs = returnLegalMoves(clickedFieldID, clickedColor, clickedPiece);
         colorizeLegalMoves(legalMoveIDs);
     } 
-
 };
 
 
@@ -80,8 +80,13 @@ function makeMove(cID, movesFor) {
     if (specialCaseEnPassant === cID+10 || specialCaseEnPassant === cID-10) {
         enPassantPlaceHolder = specialCaseEnPassant;
     }
-    
     specialCaseEnPassant = 0;
+    // insert check for moves that kill the king here
+
+    // returnObservedBy('b');
+    // returnObservedBy('w');
+
+    // actual moving below this
     gameArr[cID] = gameArr[movesFor];
     gameArr[movesFor] = undefined;
     refreshBoard();
@@ -90,14 +95,29 @@ function makeMove(cID, movesFor) {
 }
 
 
-
-
 function castle() {
 
 }
 
+////////// observedBy ...
 
+function returnObservedBy(observingColor) {
+    for (let i=0; i<99; i++) {
+        let content = gameArr[i];
+        let color = returnColor(content);
+        let piece = returnPiece(content);
+        if (content !== undefined && color === observingColor) {
+            if (piece === 'P') {
+                // to continue here maybe the whole pawnMove should be split in "moves" and "takes" so the takes-moves can be used here easily
+            } else {
+                returnLegalMoves(i, color, piece);
+                // nonono
+            }
 
+        } 
+        
+    }
+}
 
 
 

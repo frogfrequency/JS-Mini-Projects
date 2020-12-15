@@ -14,63 +14,68 @@ let blackRookLeftMoved = false;
 // ....
 
 
-function setLegalMoves(id, color, piece) {
+function returnLegalMoves(id, color, piece) {
     globalContinuator = true;
+    let returnLegalMovesOutput = [];
     switch(piece) {
         case 'R':
-            rookMoves(id,color);
+            returnLegalMovesOutput = rookMoves(id,color);
             break;
         case 'K':
-            knightMoves(id,color);
+            returnLegalMovesOutput = knightMoves(id,color);
             break;
         case 'B':
-            bishopMoves(id,color);
+            returnLegalMovesOutput = bishopMoves(id,color);
             break;
         case 'Ki':
-            kingMoves(id,color);
+            returnLegalMovesOutput = kingMoves(id,color);
             break;
         case 'Q':
-            queenMoves(id,color);
+            returnLegalMovesOutput = queenMoves(id,color);
             break;
         case 'P':
-            pawnMoves(id,color);
+            returnLegalMovesOutput = pawnMoves(id,color);
             break;
         default:
-            alert("invalid argument for piece passed into setLegalMoves");
+            alert("invalid argument for piece passed into returnLegalMoves");
     }
+    return returnLegalMovesOutput
 }
 
 // rook-moves
 
 function rookMoves(originID, originColor) {
-    let rookPattern = [1,10,-1,-10]
+    let rookMovesOutput = []; 
+    let rookPattern = [1,10,-1,-10];
     for (let j=0; j<4; j++) {
         let template = rookPattern[j];
-        console.log('\n\n\n j: ' + j + ', template: ' + template);
-        console.log('------------------------------------------');
         globalContinuator = true;
         for (let i=1; i<10; i++) {
             if(globalContinuator) {
                 let targetID = originID+i*template;
-                addIdIfLegal(targetID, originColor)
+                rookMovesOutput.push(returnIdIfLegal(targetID, originColor));
             }
         }
     }
+    return rookMovesOutput
 }
 
 // knight-moves
 
 
 function knightMoves(originID, originColor) {
+    let knightMoveOutput = [];
     let knightPattern = [-19,-8, 12, 21, 19, 8, -12, -21];
     for (let i=0; i<8; i++) {
-        addIdIfLegal(originID+knightPattern[i], originColor);
+        knightMoveOutput.push(returnIdIfLegal(originID+knightPattern[i], originColor));
     }
+    return knightMoveOutput
 }
 
 // bishop-moves
 
 function bishopMoves(originID, originColor) {
+    let bishopMovesOutput = []
     let bishopPattern = [-9,11,9,-11]
     for (let j=0; j<4; j++) {
         let template = bishopPattern[j];
@@ -80,45 +85,62 @@ function bishopMoves(originID, originColor) {
         for (let i=1; i<10; i++) {
             if(globalContinuator) {
                 let targetID = originID+i*template;
-                addIdIfLegal(targetID, originColor)
+                bishopMovesOutput.push(returnIdIfLegal(targetID, originColor));
             }
         }
     }
+    return bishopMovesOutput
 }
 
 // king-moves
 
 function kingMoves(originID, originColor) {
+    let kingMovesOutput = [];
     let kingPattern = [-11,-10,-9, 1, 11, 10, 9, -1, -11];
     for (let i=0; i<9; i++) {
-        addIdIfLegal(originID+kingPattern[i], originColor);
+        kingMovesOutput.push(returnIdIfLegal(originID+kingPattern[i], originColor));
     }
+    return kingMovesOutput
 }
 
 // queen-moves
 
 function queenMoves(originID, originColor) {
-    rookMoves(originID, originColor);
-    bishopMoves(originID, originColor);
+    let queenMovesOutput = [];
+    queenMovesOutput = rookMoves(originID, originColor);
+    bishopMoves(originID, originColor).forEach(element => 
+        queenMovesOutput.push(element));
+    return queenMovesOutput
 }
 
 // pawn-moves
+// pawn: distinguish between move and takes, promotion, EN PASSANT 
+// maybe have only one function, where *-1 changes direction?
+// have "takes" so it can be used by observedByFunction..?
+// -----> make only for white first, then add functionality that differs between b/w in the same funciton ?
+// ----> have two functions to evaluate moves, one "takes" one for "moves"
+//              ---> takes can be used by observed by!
 
 function pawnMoves(originID, originColor) {
+    let pawnMovesOutput = [];
     switch(originColor) {
         case 'w':
-            whitePawnMoves(originID);
+            pawnMovesOutput = whitePawnMovesOnly(originID);
+            pawnMovesOutput = whitePawnTakesOnly(originID);
             break;
         case 'b':
             blackPawnMoves(originID);
             break;
     }
-
+    return pawnMovesOutput
 }
 
-function whitePawnMoves(originID) {
+// 20201210 continue here with pawn-moves
+
+function whitePawnMovesOnly(originID) {
+    let whitePawnTakesOnly = [];
     if (gameArr[originID-10] === undefined) {
-        legalMoveIDs.push(originID-10);
+        whitePawnTakesOnly.push(originID-10);
     }
     if (80 < originID && originID < 89) {
         if (gameArr[originID-20] === undefined && gameArr[originID-10] === undefined) {
@@ -126,6 +148,10 @@ function whitePawnMoves(originID) {
             legalMoveIDs.push(originID-20);
         }
     }
+    return whitePawnTakesOnly;
+}
+
+function whitePawnTakesOnly(originID) {
     if (returnColor(gameArr[originID-11]) === 'b' || originID-11 === enPassantPlaceHolder) {
         legalMoveIDs.push(originID-11);
     }
@@ -160,8 +186,8 @@ function blackPawnMoves(originID) {
 
 
 
-function addIdIfLegal(targetID, originColor) {
-    console.log('________addIdIfLegal receives: targetID: ' + targetID + ', originColor: ' + originColor);
+function returnIdIfLegal(targetID, originColor) {
+    console.log('________returnIdIfLegal receives: targetID: ' + targetID + ', originColor: ' + originColor);
     let targetContent = gameArr[targetID];
 
     
@@ -170,12 +196,12 @@ function addIdIfLegal(targetID, originColor) {
     }
     if (isOnField(targetID)) {
         if(targetContent === undefined) {
-            legalMoveIDs.push(targetID);
+            return targetID
         } else if (returnColor(targetContent) === originColor) {
             globalContinuator = false;
         } else {
-            legalMoveIDs.push(targetID);
             globalContinuator = false;
+            return targetID
     }
         
     }
