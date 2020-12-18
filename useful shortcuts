@@ -12,3 +12,5 @@ remove background / make transparent background https://www.remove.bg/
 alt + arrow --> move current codeline up or down
 
 alt + shift + f --> auto format code
+
+ctrl + d --> if the cursor is somwhere inside a word, it marks the whole word
