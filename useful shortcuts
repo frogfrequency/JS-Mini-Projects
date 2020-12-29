@@ -14,3 +14,5 @@ alt + arrow --> move current codeline up or down
 alt + shift + f --> auto format code
 
 ctrl + d --> if the cursor is somwhere inside a word, it marks the whole word
+
+when a part of code is marked, it can be dragged wherever you want!!! (not only up or down)
