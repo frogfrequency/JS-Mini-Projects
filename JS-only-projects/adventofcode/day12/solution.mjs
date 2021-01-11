@@ -24,11 +24,20 @@ const testArr2 = [
     'E22', // 32 right 70 south;
 ]
 
+const testArr3 = [ // E (0)
+    'R90', // S (1)
+    'L180', // N (3)
+    'F20', // ...
+    'L270', // E (0)
+]
+
 
 
 
 const directions = ['E', 'S', 'W', 'N']
 let currentDirectionIdx = 0;
+
+
 
 let currentEast = 0;
 let currentNorth = 0;
@@ -42,14 +51,8 @@ function processInstructions(arr) {
         let currentValue = parseInt(element.slice(1, element.length));
         switch(currentLetter) {
             case 'N':
-                move(currentLetter, currentValue);
-                break;
             case 'E':
-                move(currentLetter, currentValue);
-                break;
             case 'S':
-                move(currentLetter, currentValue);
-                break;
             case 'W':
                 move(currentLetter, currentValue);
                 break;
@@ -57,10 +60,13 @@ function processInstructions(arr) {
                 move(directions[currentDirectionIdx], currentValue);
                 break;
             case 'R':
-                currentDirectionIdx = (currentDirectionIdx+1*(currentValue/90))%4;
+                currentDirectionIdx = (currentDirectionIdx+(currentValue/90))%4;
                 break;
             case 'L':
-                currentDirectionIdx = (currentDirectionIdx-1*(currentValue/90))%4;
+                currentDirectionIdx = (currentDirectionIdx-(currentValue/90))%4;
+                while (currentDirectionIdx < 0) {
+                    currentDirectionIdx = 4 - Math.abs(currentDirectionIdx);
+                }
                 break;
             default:
                 console.log('critical error in switch');
@@ -87,13 +93,9 @@ function move(dir, val) {
 }
 
 function logManhattandistance() {
-    if (currentNorth < 0) {
-        currentNorth = currentNorth * -1;
-    }
-    if (currentEast < 0) {
-        currentEast = currentEast * -1;
-    }
-    console.log(`the manhattandistance: ${currentNorth} (north) + ${currentEast} (east) = ${currentNorth + currentEast}`);
+    let absoluteNorth = Math.abs(currentNorth);
+    let absoluteEast = Math.abs(currentEast);
+    console.log(`the manhattandistance: ${absoluteNorth} (north) + ${absoluteEast} (east) = ${absoluteNorth + absoluteEast}`);
 }
 
 
@@ -103,7 +105,7 @@ function logManhattandistance() {
 
 // try processInstructions with testArr testArr2 and inputArr
 
-processInstructions(testArr2);
+processInstructions(inputArr);
 
 console.log(currentNorth, currentEast);
 
