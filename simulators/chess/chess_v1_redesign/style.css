@@ -1,3 +1,7 @@
+body {
+    background-color: rgba(0, 0, 0, 0.876);
+  }
+
 #container {
     border-style: solid;
     width: 640px; /* 8x80px + 8x2*2px border */
@@ -22,4 +26,11 @@
 
 #container :hover{
     background-color: orange;
+}
+
+.promotion-container {
+    background-color: orange;
+    width: 320px;
+    height: 80px;
+    display: none;
 }
