@@ -1,3 +1,6 @@
+import {inputArr} from "./puzzle-input.mjs"
+
+
 let testArr = [['mask', '0101111110011010X110100010X100000XX0'],
 [46424, 216719],
 [43628, 6647],
@@ -14,6 +17,7 @@ function main (arr) {
     for (let a=0; a<arr.length; a++) {
         if (arr[a][0] === 'mask') {
             currentMask = arr[a][1];
+            console.log(`\n\n----------- mask changed to: ${currentMask}\n`);
         } else {
             createUpdateMemory(currentMask, arr[a]);
         }
@@ -24,14 +28,15 @@ function createUpdateMemory(mask, element) {
     let memoryAdress = element[0];
     let value = toBinary(element[1]);
     value = updateValue(value, mask);
-    console.log(`memoryAdress ${memoryAdress}    value: ${value}`);
+    // console.log(`memoryAdress ${memoryAdress}    value: ${value}`);
     let adressIdx = memoryAdressArr.indexOf(memoryAdress);
     if (adressIdx === -1) {
-        console.log('not found');
         memoryAdressArr.push(memoryAdress);
         memoryContentArr.push(value);
+        console.log(`not found --> new entry made for ${memoryAdress} ${value}`);
     } else {
         memoryContentArr[adressIdx] = value;
+        console.log(`found --> entry ${memoryAdress} changed to ${value}`);
     }
 
 }
@@ -60,9 +65,17 @@ function toBinary(dec) {
     return output
 }
 
-main(testArr);
+main(inputArr);
 
+function returnTotalSum(arr) {
+    let output = 0;
+    for (let i=0; i<arr.length; i++) {
+        let currentElement = arr[i];
+        let decimalEquivalent = parseInt(currentElement, 2);
+        output = output + decimalEquivalent;
+    }
+    console.log(`the final sum might be: ${output}`)
+}
 
-let theTestVariable = '0101000101100000110'
+returnTotalSum(memoryContentArr);
 
-console.log('hoi' + parseInt(theTestVariable, 10));
