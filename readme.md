@@ -27,4 +27,5 @@ If you are working on a bugfix, create new branches with naming pattern:
 - fix/my-current-problem
 - bugfix/my-current-problem
 
-hello from marcel
+bye bye from sandro
+bye bye from marcel
