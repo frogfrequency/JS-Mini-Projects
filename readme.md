@@ -19,8 +19,12 @@ this above-mentioned list is just a showcase of its functionality and is certain
 
 ### --- a few noteworthy projects: ---
 
-
-- [Advent of Code](adventofcode)
+- [a working chess board](simulators/chess/chess_v1_redesign)
+- [Advent of Code Coding Challenges](adventofcode)
+- [buggy ball movement](simulators/sim_1)
+- [poker probability simulator](JS-only-projects/Poker/poker-master-build)
+- [little guessing programm](pixelEstimator_V2)
+- [a very basic paint clone](drawing-programms/Paint_V1)
 
 When working on new features or tasks, create new branches with naming pattern:
 
