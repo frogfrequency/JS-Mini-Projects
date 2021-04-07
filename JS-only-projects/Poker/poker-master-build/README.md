@@ -14,4 +14,5 @@ correctly... therefore the table is very slightly off. but the fact remains, tha
 
 in this folder there is only the more or less finished version.
 
-to see how it all evolved go to JS-Mini-Projects/old-stuff-from-Macbook/Poker
+to see how it all evolved go to:
+[origins of the "Poker"-Programm](https://github.com/frogfrequency/JS-Mini-Projects/tree/main/veryOldStuffFromMacbook/Poker/ "myTitle")
