@@ -16,3 +16,11 @@ in this folder there is only the more or less finished version.
 
 to see how it all evolved go to:
 [origins of the "Poker"-Programm](https://github.com/frogfrequency/JS-Mini-Projects/tree/main/veryOldStuffFromMacbook/Poker/ "myTitle")
+
+
+
+| Syntax      | Description | somethingelse |
+| ----------- | ----------- | ------------- |
+| Header      | Title       | test          |
+| Paragraph   | Text        | test          |
+| Paragraph   | Text        | test          |
