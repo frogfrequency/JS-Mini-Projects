@@ -11,6 +11,8 @@ it should be cleaned up from time to time.
 ### --- a few noteworthy projects: ---
 
 - [a working chess board](simulators/chess/chess_v1_redesign)
+    * --> you can even try it out right now without downloading anything. just visit:* [https://frogfrequency.github.io/](https://frogfrequency.github.io/)
+    * your reporting of the bugs you might find is very much appreciated!
 - [Advent of Code Coding Challenges](adventofcode)
 - [buggy ball movement](simulators/sim_1)
 - [poker probability simulator](JS-only-projects/Poker/poker-master-build)
