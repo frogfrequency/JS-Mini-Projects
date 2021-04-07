@@ -19,8 +19,19 @@ to see how it all evolved go to:
 
 
 
-| Syntax      | Description | somethingelse |
-| ----------- | ----------- | ------------- |
-| Header      | Title       | test          |
-| Paragraph   | Text        | test          |
-| Paragraph   | Text        | test          |
+### Frequency of 7-card poker hands
+*source: Wikipedia*
+[https://en.wikipedia.org/wiki/Poker_probability#Frequency_of_7-card_poker_hands](https://en.wikipedia.org/wiki/Poker_probability#Frequency_of_7-card_poker_hands)
+
+
+| Hand                       | Probability |
+| -------------------------- | ----------- |
+| Straight flushes           | 0.0311%     |
+| Four of a kind             | 0.168%      |
+| Full house                 | 2.60%       |
+| Flush                      | 3.03%       |
+| Straight                   | 4.62%       |
+| Three of a kind            | 4.83%       |
+| Two pair                   | 23.5%       |
+| One pair                   | 43.8%       |
+| High card                  | 17.4%       |
