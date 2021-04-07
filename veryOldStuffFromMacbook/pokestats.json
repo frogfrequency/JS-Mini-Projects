@@ -1,0 +1,32 @@
+{
+    "pokelist": [
+        {
+        "ID":           "0" ,
+        "name":         "Bulbasaur" ,
+        "type":         "fire" ,
+        "attack":       "1" ,
+        "defence":      "1" ,
+        "attackname":   "Vinewhip"  
+        },
+        {
+        "ID":           "1" ,
+        "name":         "Charmander" ,
+        "type":         "fire" ,
+        "attack":       "1.25" ,
+        "defence":      "0.8" ,  
+        "attackname":   "Ember"    
+        },
+        {
+        "ID":           "2" ,
+        "name":         "Squirtle" ,
+        "type":         "fire" ,
+        "attack":       "0.8" ,
+        "defence":      "1.25" ,
+        "attackname":    "Aquagun" ,    
+        }
+        
+    ]
+       
+}
+
+ /Users/marcelbraun/Javasachen/pokestats.json

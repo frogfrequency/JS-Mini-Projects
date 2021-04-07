@@ -20,7 +20,7 @@ this above-mentioned list is just a showcase of its functionality and is certain
 ### --- a few noteworthy projects: ---
 
 
-- [adventofcode])(Advent of Code)
+- [adventofcode](Advent of Code)
 
 When working on new features or tasks, create new branches with naming pattern:
 

@@ -10,3 +10,8 @@ you can generate thousands or millions of hands and simulate the distribution of
 
 it coincides with the probability-tables from wikipedia (A,2,3,4,5 -straights are not yet detected 
 correctly... therefore the table is very slightly off. but the fact remains, that it works..
+
+
+in this folder there is only the more or less finished version.
+
+to see how it all evolved go to JS-Mini-Projects/old-stuff-from-Macbook/Poker
