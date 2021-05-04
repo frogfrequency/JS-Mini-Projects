@@ -12,7 +12,9 @@ it should be cleaned up from time to time.
 
 - [a working chess board](simulators/chess/chess_v1_redesign)
 
-![chessScreenshotImg](images/ScreenshotChess.PNG)
+
+
+<img src="images/ScreenshotChess.PNG" width="300">
 
 
     * --> you can even try it out right now without downloading anything. just visit:* [https://frogfrequency.github.io/](https://frogfrequency.github.io/)
