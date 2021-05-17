@@ -374,7 +374,7 @@ export const puzzleInput = [
 ]
 
 
-export const testInput = [
+export const testInput = [ // 26335
     '2 * 3 + (4 * 5)', // 26.
     '5 + (8 * 3 + 9 + 3 * 4 * 3)', // 437.
     '5 * 9 * (7 * 3 * 3 + 9 * 3 + (8 + 6 * 4))', // 12240.
