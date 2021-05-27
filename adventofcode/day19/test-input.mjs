@@ -3,8 +3,8 @@ export const testRulesArr = [
     [[2,3], [3,2]],         // 1
     [[4,4], [5,5]],         // 2
     [[4,5], [5,4]],         // 3
-    "a",                  // 4
-    "b"                   // 5
+    ["a"],                  // 4
+    ["b"]                   // 5
 ]
 
 // take rule 0 and replace the elements again and again

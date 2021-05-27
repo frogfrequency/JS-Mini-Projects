@@ -1,5 +1,8 @@
-let a = ['a', 'b', 'c'];
-let b = ['x', 'y'];
+let a = ['aaa', 'bbb', 'ccc'];
+let b = ['xx', 'yy'];
+
+
+
 
 function combineAND(a,b) {
     let output = [];
@@ -15,4 +18,16 @@ function combineAND(a,b) {
 }
 
 
-combineAND(a,b);
+function combineANDtwo(first, second) {
+    let combineAndOutput = []; 
+    for (let i=0; i<first.length; i++) {
+        for (let j=0; j<second.length; j++) {
+            let subString = first[i] + second[j];
+            combineAndOutput.push(subString);
+        }
+    }
+    return combineAndOutput
+}
+
+
+console.log(combineANDtwo(a,b));

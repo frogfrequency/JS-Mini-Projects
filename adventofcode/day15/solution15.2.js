@@ -23,7 +23,7 @@ function doIt() {
         if(i%50000  === 0) {console.log(i);}
         lastOccurenceIdx = theObj[lastSpokenNumber];
         theObj[lastSpokenNumber] = i;
-        if (lastOccurenceIdx === undefined) {
+        if (lastOccurenceIdx === undefined) { 
             theObj[lastSpokenNumber] = i;
             lastSpokenNumber = 0;
         } else {
