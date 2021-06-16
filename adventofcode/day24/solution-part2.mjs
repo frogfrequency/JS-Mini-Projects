@@ -3,7 +3,7 @@ import { puzzleInput } from "./puzzle-input.mjs";
 import { testInput } from "./test-input.mjs";
 
 
-let input = testInput;
+let input = puzzleInput;
 
 function giveInitialPattern(input) {
     let output = [];
@@ -99,9 +99,9 @@ function giveMinMax(pattern) {
 
 function simulate100days(startPattern) {
     let pattern = startPattern;
-    for (let i = 0; i < 10; i++) {
-        console.log('length: ' + pattern.length);
-        console.log(pattern);
+    for (let i = 0; i < 100; i++) {
+        console.log(`DAY ${i}`);
+        // console.log(pattern);
         pattern = giveNewDay(pattern); 
     }
     return pattern
@@ -146,24 +146,15 @@ function giveIsBlackNextDay(NE, E, pattern) {
 
     let neighbours = giveNeighbours(element);
     let blackNeighbourCount = giveBlackNeighbourCount(neighbours, pattern);
-    
-    // console.log(`isBlack: ${thisTileIsBlack} blackneighbourcount  = ${blackNeighbourCount}`);
-
+  
     if (thisTileIsBlack) {
         if (blackNeighbourCount === 0 || 2 < blackNeighbourCount) {
-            console.log(`\t switch to white     ${NE} / ${E}`);
             return false
         }
-    } else if (blackNeighbourCount === 2) {
-        console.log(`\t switch to black   ${NE} / ${E}`);        
+    } else if (blackNeighbourCount === 2) {       
         return true
     } 
 
-    // if it is neither (black and count === 0 or count 2 < count and)  nor (white and count === 2)
-    if (thisTileIsBlack) {console.log(`\t i remain black      ${NE} / ${E}`);}
-    // let color = 'orange!?!?!?!?';
-    // if (thisTileIsBlack) {color = 'black'} else {color = 'white'};
-    // console.log(`\t i remain ${color}  ${NE} / ${E}`);
     return thisTileIsBlack
 }
 
@@ -176,7 +167,7 @@ function giveNeighbours(coords) {
     for (let i = 0; i < neighbourPattern.length; i++) {
         let targetCoords = [undefined, undefined];
         targetCoords[0] = coords[0] + neighbourPattern[i][0];
-        targetCoords[1] = coords[0] + neighbourPattern[i][1];
+        targetCoords[1] = coords[1] + neighbourPattern[i][1];
         output.push(targetCoords);
     }
     return output
@@ -197,3 +188,6 @@ function giveBlackNeighbourCount(neighbours, pattern) {
 // giveNewDay(initialPattern);
 
 simulate100days(initialPattern);
+
+
+// console.log(giveNeighbours([-3,0]));
