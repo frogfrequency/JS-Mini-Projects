@@ -2,9 +2,24 @@ function giveKey(number) {
     return 'e' + number
 }
 
-let object = {
-    e1: 2,
+// 186524973
+
+let puzzleObject = {
+    e1: 8,
+    e2: 4,
+    e3: 10,
+    e4: 9,
+    e5: 2,
+    e6: 5,
     e7: 3,
+    e8: 6,
+    e9: 7
+}
+
+
+let testObject = {
+    e1: 2,
+    e7: 10,
     e2: 5,
     e3: 8,
     e4: 6,
@@ -14,8 +29,26 @@ let object = {
     e9: 1
 }
 
-const objectLength = Object.keys(object).length;
+let object = puzzleObject;
 
+// increase object to 1'000'000 here
+
+for (let i=10; i<1000000; i++) {
+    let newKey = 'e' + i;
+    object[newKey] = i+1;
+}
+
+let lastkey = 'e1000000';
+
+object[lastkey] = 1;
+
+
+
+
+
+
+const objectLength = Object.keys(object).length;
+console.log(objectLength);
 
 
 // 389125467
@@ -51,7 +84,7 @@ function move(extractAfter) {
         takenLabels.push(object[key])
         key = giveKey(object[key]);
     }
-    console.log(takenLabels);
+
     
     let newValue = object[key];
     object[giveKey(extractAfter)] = newValue;
@@ -60,7 +93,7 @@ function move(extractAfter) {
     if (insertAfter === 0) {
         insertAfter = objectLength;
     }
-    console.log('here ' + insertAfter);
+
 
     while (takenLabels.includes(insertAfter)) {
         insertAfter = insertAfter-1;
@@ -68,7 +101,7 @@ function move(extractAfter) {
             insertAfter = objectLength;
         }
     }
-    console.log('here end ' + insertAfter);
+
 
     let insertAfterKey = giveKey(insertAfter);
     let insertAfterKeyValue = object[insertAfterKey];
@@ -85,11 +118,22 @@ function playRounds(quantity, firstCurrent) {
         move(current);
         current = object[giveKey(current)];
     }
-    logTheObject(object);
 }
 
-playRounds(100, 3);
+playRounds(10000000, 1);
 
+// logTheObject(object);
+
+
+let valueObjectRightOf1 = object[giveKey(1)];
+let valueObjectTwoRightOf1 = object[giveKey(valueObjectRightOf1)];
+
+console.log('first ' + valueObjectRightOf1);
+console.log('second ' + valueObjectTwoRightOf1);
+
+
+// console.log(`${valueObjectRightOf1} * ${valueObjectTwoRightOf1} = ${valueObjectTwoRightOf1*valueObjectTwoRightOf1}`);
+//      --> this doesnt work because numbers to big for javascript standard types????
 
 // 389125467
 
