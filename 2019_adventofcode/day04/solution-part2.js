@@ -15,11 +15,20 @@ for (let i=range[0]; i<range[1]+1; i++) {
 
 function includesDouble(input) {
     let includesDouble = false;
+    let restrictedChar; 
     for (let i = 0; i < input.length - 1; i++) {
-        if (input.charAt(i) === input.charAt(i + 1)) {
-            includesDouble = true;
+        if (input.charAt(i) !== restrictedChar) {
+            if (input.charAt(i) === input.charAt(i + 1)) {
+                if (input.charAt(i) === input.charAt(i+2)) {
+                    console.log('tripple');
+                    restrictedChar = input.charAt(i);
+                } else {
+                    includesDouble = true;
+                }
+            }
         }
     }
+
     return includesDouble;
 }
 
@@ -40,3 +49,14 @@ function onlyIncreasing(input) {
 
 
 console.log(`the counter is ${counter}`);
+
+
+
+// console.log(includesDouble('123466'));
+
+
+// let test = '1234567';
+
+// console.log('----');
+
+// console.log(test.charAt(7) !== test.charAt(7));
