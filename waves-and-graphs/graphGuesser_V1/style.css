@@ -1,3 +1,8 @@
+body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color:rgba(207, 158, 79);
+}
+
 #area {
     background-color: lemonchiffon;
     width: 500px;
