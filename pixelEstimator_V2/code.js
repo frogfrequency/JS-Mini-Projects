@@ -12,7 +12,7 @@ function generateBoard() {
 
     const seedPercent = Math.floor(Math.random() * 100);
 
-    const totalPixels = 40000;
+    const totalPixels = 40400;
     for (i = 0; i < totalPixels; i++) {
 
         const newDiv = document.createElement("div");
@@ -39,14 +39,19 @@ function generateBoard() {
 function compare() {
     if (roundPlayed) {
         const userNr = document.getElementById("user-input").value;
-        const outputMsg = document.getElementById("result-msg");
-        var resultText = 'You guessed: ' + userNr + ' , correct answer: ' + percentage + '<br>';
-        outputMsg.innerHTML += resultText;
+        if (userNr != '' && 0 <= userNr && userNr <= 100) {
+            const outputMsg = document.getElementById("result-msg");
+            var resultText = 'You guessed: ' + userNr + ' , correct answer: ' + percentage + '<br>';
+            outputMsg.innerHTML += resultText;
+            roundPlayed = false;
+            var x = document.getElementById("abdecker")
+            x.style.display = "none";
+        } else {
+            alert ("enter a valid number betwenn 0 and 100.")
+        }
+    } else {
+        alert ("you need to start a round first.")
     }
-    roundPlayed = false;
-
-    var x = document.getElementById("abdecker")
-    x.style.display = "none";
 }
 
 

@@ -1,23 +1,33 @@
 *{
-    background-color: honeydew;
+    background-color: lightgrey;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 #abdecker {
     width: 400px;
     height: 400px;
     background-color: lightgrey;
-    position: absolute;
-    left: 8px;
-    top: 115px;
+    position: relative;
+    left: 1px;
+    top: -401px;
     display: none;
 }
 
+#control-field {
+    position: absolute;
+    top: 560px;
+    /* border: solid blue; */
+    /* margin-top: 20px; */
+}
 
 #main-field {
     background-color: lightgrey;
     width: 400px;
     height: 400px;
     font-size: 0;
+    border: solid;
+    border-color: grey;
+    border-width: 1px;
 }
 
 .pixelOne {
@@ -31,4 +41,8 @@
     width: 2px;
     height: 2px;
     display: inline-block;
+}
+
+.button {
+    cursor: pointer;
 }

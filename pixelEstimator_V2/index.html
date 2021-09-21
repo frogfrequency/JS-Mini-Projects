@@ -10,15 +10,21 @@
 <body>
     <h1 id="main-header">Pixel Estimator 2020</h1>
     <div id="instructions">Welcome to Pixel Estimator 2020 <br> What percentage of pixels did turn darker for a short time?</div>
+    <br>
+    
     <div id="main-field">
     </div>
     <div id="abdecker"></div>
-    <button onclick="generateBoard()">play a round</button>
-    <input id="user-input" type="number">
-    <button onclick="compare()">check your guess</button>
-    <br><br>
-    <div id="result-msg"></div>
-
+    <div id="control-field">
+        <button onclick="generateBoard()" class="button">play a round</button>
+        <input id="user-input" type="number">
+        <button onclick="compare()" class="button">check your guess</button>
+        <br><br>
+        <div id="result-msg"></div>
+    </div>
+    
+    
+    
 
 
 </body>
