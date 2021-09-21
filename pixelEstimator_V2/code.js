@@ -12,7 +12,7 @@ function generateBoard() {
 
     const seedPercent = Math.floor(Math.random() * 100);
 
-    const totalPixels = 40400;
+    const totalPixels = 40000;
     for (i = 0; i < totalPixels; i++) {
 
         const newDiv = document.createElement("div");
