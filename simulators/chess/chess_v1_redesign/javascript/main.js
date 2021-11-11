@@ -121,6 +121,8 @@ function makeMove(cID, movesFor) {
     potentialNewGameArr[movesFor] = undefined;
     let moverColor = returnColor(potentialNewGameArr[cID]);
 
+        enPassantTakenPawnID = givePotentialEnPassantTakenPawnID(cID, specialCaseEnPassantID, potentialNewGameArr);
+        potentialNewGameArr[enPassantTakenPawnID] = undefined;
         specialCaseEnPassantID = returnEnPassantID(cID, movesFor, moverColor, potentialNewGameArr);
         performCastleIfNeeded(cID, movesFor, potentialNewGameArr);
         updateCastleParameters(movesFor);
@@ -172,6 +174,24 @@ function gameOverCheck() {
     console.log(`\n------------------------------------------------------------`);
 
 }
+
+
+function givePotentialEnPassantTakenPawnID(cID, specialCaseEnPassantID, potentialNewGameArr) {
+    let movedPiece = returnPiece(potentialNewGameArr[cID]);
+    if (cID === specialCaseEnPassantID && movedPiece === 'P') {
+        if (cID < 49) {
+            console.log(`---------------DELETE ${cID+10}`)
+            return cID+10
+        } else if (70 < cID) {
+            console.log(`---------------DELETE ${cID-10}`);
+            return cID-10
+        }
+    } else {
+        console.log(`---------------DELETE NOTHIING`)
+        return 0
+    }
+}
+
 
 
 function performCastleIfNeeded(cID, movesFor, potentialNewGameArr) {
